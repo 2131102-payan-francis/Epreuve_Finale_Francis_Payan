@@ -1,0 +1,243 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: API de gestion des contacts
+  description: API pour la gestion des contacts. Réalisé dans le cadre d'un projet scolaire.
+
+servers:
+  - url: http://localhost:8080
+  
+
+paths:
+  /contacts/lister:
+    get:
+      tags:
+        - Contacts
+      summary: Affiche la liste de tous les contacts.
+      responses:
+        '200':
+          description: Un tableau de tous les contacts
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    nom:
+                      type: string
+                    prenom:
+                      type: string
+                    email:
+                      type: string
+                    message:
+                      type: string
+              example:
+                - id: 1
+                  nom: Dupont
+                  prenom: Pierre
+                  email: pierre.dupont@example.com
+                  message: "Bonjour, j'aimerais avoir des informations sur vos produits."
+
+  /contacts/recuperer/{id}:
+    get:
+      tags:
+        - Contacts
+      summary: Affiche les informations d'un contact.
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+            example: 1
+          required: true
+          description: L'ID du contact à afficher
+      responses:
+        '200':
+          description: Les informations du contact
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  nom:
+                    type: string
+                  prenom:
+                    type: string
+                  email:
+                    type: string
+                  message:
+                    type: string
+              example:
+                id: 1
+                nom: Dupont
+                prenom: Pierre
+                email: pierre.dupont@example.com
+                message: "Bonjour, j'aimerais avoir des informations sur vos produits."
+
+  /contacts/ajouter:
+    post:
+      tags:
+        - Contacts
+      summary: Ajoute un nouveau contact.
+      requestBody:
+        description: Données du nouveau contact
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nom:
+                  type: string
+                prenom:
+                  type: string
+                email:
+                  type: string
+                message:
+                  type: string
+            example:
+              nom: Dupont
+              prenom: Pierre
+              email: pierre.dupont@example.com
+              message: "Bonjour, j'aimerais avoir des informations sur vos produits."
+      responses:
+        '201':
+          description: Contact ajouté avec succès
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  nom:
+                    type: string
+                  prenom:
+                    type: string
+                  email:
+                    type: string
+                  message:
+                    type: string
+              example:
+                id: 1
+                nom: Dupont
+                prenom: Pierre
+                email: pierre.dupont@example.com
+                message: "Bonjour, j'aimerais avoir des informations sur vos produits."
+
+  /contacts/supprimer/{id}:
+    delete:
+      tags:
+        - Contacts
+      summary: Supprime un contact existant.
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+            example: 1
+          required: true
+          description: L'ID du contact à supprimer
+      responses:
+        '200':
+          description: Contact supprimé avec succès
+
+  /contacts/mettreajour/{id}:
+    put:
+      tags:
+        - Contacts
+      summary: Modifie un contact existant.
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+            example: 1
+          required: true
+          description: L'ID du contact à modifier
+      requestBody:
+        description: Données du contact à modifier
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nom:
+                  type: string
+                prenom:
+                  type: string
+                email:
+                  type: string
+                message:
+                  type: string
+            example:
+              nom: Dupont
+              prenom: Pierre
+              email: pierre.dupont@example.com
+              message: "Bonjour, j'aimerais avoir des informations sur vos produits."
+      responses:
+        '200':
+          description: Contact modifié avec succès
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  nom:
+                    type: string
+                  prenom:
+                    type: string
+                  email:
+                    type: string
+                  message:
+                    type: string
+              example:
+                id: 1
+                nom: Dupont
+                prenom: Pierre
+                email: pierre.dupont@example.com
+                message: "J'aimerais obtenir un devis pour vos produits."
+
+  /login:
+    post:
+      tags:
+        - Utilisateurs
+      summary: Authentification de l'utilisateur et génération d'une clé API.
+      requestBody:
+        description: Informations d'identification de l'utilisateur
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+            example:
+              email: utilisateur@example.com
+              password: motdepasse
+      responses:
+        '200':
+          description: Authentification réussie et clé API générée
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  api_key:
+                    type: string
+              example:
+                api_key: abcdef123456
+        '401':
+          description: Informations d'identification non valides
+

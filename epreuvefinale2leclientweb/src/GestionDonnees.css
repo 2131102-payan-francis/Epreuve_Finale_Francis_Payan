@@ -1,0 +1,140 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: blue;
+  border-radius: 20px;
+  padding: 10px;
+  margin-bottom: 20px;
+  transition: background-color 0.3s;
+}
+
+.title-container:hover {
+  background-color: rgb(0, 0, 50);
+  box-shadow: 0px 14px 28px rgba(0, 0, 0, 0.25), 0px 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.title {
+  margin: 0;
+  color: white;
+}
+
+.name {
+  margin: 0;
+  color: white;
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+}
+
+.part {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Ajouté pour centrer les éléments */
+  background-color: rgb(224, 224, 224);
+  border-radius: 20px;
+  padding: 20px;
+  width: 45%;
+  transition: background-color 0.3s;
+}
+
+
+.part:hover {
+  background-color: #daffc1;
+  box-shadow: 0px 14px 28px rgba(0, 0, 0, 0.25), 0px 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.input {
+  border-radius: 10px;
+  padding: 5px;
+  margin-bottom: 10px;
+  width: 30%; /* Modifiez cette valeur pour ajuster la largeur des inputs */
+  margin-left: auto; /* Ajouté pour centrer les inputs */
+  margin-right: auto; /* Ajouté pour centrer les inputs */
+}
+
+.button1,
+.button3 {
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  cursor: pointer;
+  width: 25%; /* Modifiez cette valeur pour ajuster la largeur des boutons */
+  margin-bottom: 10px;
+  background-color: lightblue;
+  transition: background-color 0.3s;
+  margin-left: auto; /* Ajouté pour centrer les boutons */
+  margin-right: auto; /* Ajouté pour centrer les boutons */
+}
+
+
+.button1:hover {
+  background-color: dodgerblue;
+  box-shadow: 0px 14px 28px rgba(0, 0, 0, 0.25), 0px 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.button3 {
+  background-color: rgb(255, 198, 128);
+}
+
+.button3:hover {
+  color : white;
+  background-color: rgb(0, 42, 255);
+  box-shadow: 0px 14px 28px rgba(0, 0, 0, 0.25), 0px 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Ajoutez cette classe pour organiser les contacts en ligne et les faire passer à la ligne suivante lorsqu'ils atteignent la fin de la largeur de l'écran */
+.contact-list {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  justify-content: center; /* Ajoutez cette ligne pour centrer les boîtes de contact */
+}
+
+.contact-box {
+  background-color: #e6e6e6;
+  border-radius: 10px;
+  padding: 15px;
+  margin: 10px;
+  width: calc(25% - 20px); /* Vous pouvez ajuster la largeur pour changer le nombre de boîtes de contact par ligne */
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.contact-box:hover {
+  color : white;
+  background-color: rgb(0, 42, 255);
+  box-shadow: 0px 14px 28px rgba(0, 0, 0, 0.25), 0px 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+/* Ajoutez ces règles pour gérer le responsive design sur les petits écrans */
+@media (max-width: 768px) {
+  .contact-box {
+    width: calc(50% - 20px);
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-box {
+    width: 100%;
+  }
+}
+
+
